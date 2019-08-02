@@ -34,6 +34,11 @@ class TasksController < ApplicationController
     @task.update(done: false)
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @id = @task.id
+    @task.destroy
+  end
   private
   
   def task_parameter
