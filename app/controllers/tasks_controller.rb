@@ -1,12 +1,18 @@
 class TasksController < ApplicationController
   def index
     @task = Task.new
-    @tasks =  Task.all
+    @to_do =  Task.to_do(current_user)
+    @done = Task.done(current_user)
   end
 
   def create
     @task = Task.new(task_parameter)
+    @task.user_id = current_user.id
     @task.save
+  end
+
+  def edit
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -15,11 +21,22 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @task.update(task_parameter)
   end
-  
+
+  def done
+    @task = Task.find(params[:id])
+    @task.update(done: true)
+  end
+
+  def to_do
+    @task = Task.find(params[:id])
+    @task.update(done: false)
+  end
+
   private
   
   def task_parameter
-    params.requiere(:task).permit(:title,:description)
+    params.require(:task).permit(:title,:description)
   end
 end

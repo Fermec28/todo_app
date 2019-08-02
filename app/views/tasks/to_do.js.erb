@@ -1,0 +1,2 @@
+$('#<%= j "#{@task.id}" %>').remove()
+$('#todo-container').prepend('<%= j render "task", task: @task %>')

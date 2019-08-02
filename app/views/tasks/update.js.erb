@@ -1,2 +1,3 @@
-<h1>Tasks#update</h1>
-<p>Find me in app/views/tasks/update.html.erb</p>
+$('#<%= j "#{@task.id}" %>').replaceWith('<%= j render "task", task: @task %>')
+$('#task-modal').remove();
+$('.modal-backdrop').remove();

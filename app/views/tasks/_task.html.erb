@@ -1,0 +1,15 @@
+    <div class="list-group-item list-group-item-action flex-column align-items-start" id="<%= task.id%>">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1 text-center"><%= task.title%></h5>
+            <small><%=time_ago_in_words(task.created_at)%></small>
+        </div>
+        <p class="mb-1"><%= simple_format(task.description) %></p>
+        <small>
+            <%= link_to 'Edit', edit_task_path(task), remote:true, :class => "btn" %>|
+            <% if task.done%>
+            <%= link_to 'Re Open', to_do_task_path(task), :method => :post, remote:true, :class => "btn" %>
+            <% else %>
+            <%= link_to 'Done', done_task_path(task), :method => :post, remote:true, :class => "btn" %>
+            <% end %>        
+        </small>
+    </div>

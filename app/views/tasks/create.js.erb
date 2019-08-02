@@ -1,1 +1,10 @@
-
+<% if @task.errors.empty? %>
+  // add the row to the table, show alert and hide modal
+  $('#todo-container').append(' <%= j render "task", task: @task %>');
+  $('.alert-success').html("Task has been created successfully").show();
+  $('#task-modal').remove();
+  $('.modal-backdrop').remove();
+<% else %>
+  // show first error
+  alert('<%= @task.errors.full_messages[0] %>');
+<% end %>
