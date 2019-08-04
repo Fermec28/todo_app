@@ -34,6 +34,11 @@ class TasksController < ApplicationController
     @task.update(done: false)
   end
 
+  def play_pause
+    @task = Task.find(params[:id])
+    @task.play_pause
+  end
+
   def destroy
     @task = Task.find(params[:id])
     @id = @task.id

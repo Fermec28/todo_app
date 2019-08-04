@@ -1,9 +1,18 @@
     <div class="list-group-item list-group-item-action flex-column align-items-start" id="<%= task.id%>">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 text-center"><%= task.title%></h5>
+            <div class= "row">
             <small><%=time_ago_in_words(task.created_at)%></small>
+            </div>
         </div>
-        <p class="mb-1"><%= simple_format(task.description) %></p>
+        <div class="row">
+            <div class="col">
+                <p class="mb-1 description"><%= simple_format(task.description) %></p>
+            </div>
+            <div class="col">
+                <p class="mb-1"><%= time_in_distance(task.duration)%></p>
+            </div>
+        </div>
         <p>
             <%= link_to 'Edit', edit_task_path(task), remote:true, :class => "btn" %>|
             <% if task.done%>
@@ -11,6 +20,9 @@
             <% else %>
             <%= link_to 'Done', done_task_path(task), :method => :post, remote:true, :class => "btn" %>|
             <% end %>
-            <%= link_to 'Destroy',  task,  method: :delete, remote:true, data: { confirm: 'Are you sure?' } %>        
+            <%= link_to 'Destroy',  task,  method: :delete, remote:true, data: { confirm: 'Are you sure?' } %>
+            <% unless task.done%>
+                |<%= link_to task.playing_status ? 'Pause' : 'Play', play_pause_path(task), :method => :post, remote:true, :class => "btn" %>
+            <% end%>        
         </p>
     </div>

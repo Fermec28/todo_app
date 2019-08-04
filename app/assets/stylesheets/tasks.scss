@@ -16,3 +16,7 @@ body{
     max-height: 80%;
     overflow-y: scroll;
 }
+
+p.description{
+    overflow-wrap: break-word;
+}
