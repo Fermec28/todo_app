@@ -28,6 +28,7 @@ class TasksController < ApplicationController
 
   def done
     @task = Task.find(params[:id])
+    @task.playing_status = false
     @task.update(done: true)
   end
 

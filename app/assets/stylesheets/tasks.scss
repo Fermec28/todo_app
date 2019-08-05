@@ -20,3 +20,13 @@ body{
 p.description{
     overflow-wrap: break-word;
 }
+.playing-task{
+    background-color: #f7f33b;
+}
+
+.playing-task:focus,
+.playing-task:active,
+.playing-task:hover
+{
+    background-color: #f7f33bab;
+}

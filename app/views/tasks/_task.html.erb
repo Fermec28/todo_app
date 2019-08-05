@@ -1,4 +1,4 @@
-    <div class="list-group-item list-group-item-action flex-column align-items-start" id="<%= task.id%>">
+    <div class="list-group-item list-group-item-action flex-column align-items-start <%= "playing-task" if task.playing_status%>" id="<%= task.id%>">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 text-center"><%= task.title%></h5>
             <div class= "row">
@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-6">
                 <p class="mb-1 description"><%= simple_format(task.description) %></p>
             </div>
-            <div class="col">
+            <div class="col-6">
                 <p class="mb-1"><%= time_in_distance(task.duration)%></p>
             </div>
         </div>
