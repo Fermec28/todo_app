@@ -17,7 +17,7 @@ body{
     overflow-y: scroll;
 }
 
-p.description{
+.description > p{
     overflow-wrap: break-word;
 }
 .playing-task{
