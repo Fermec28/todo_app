@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :update_duration, only: [:index]
+
   def index
     @task = Task.new
     @to_do =  Task.to_do(current_user)
@@ -48,5 +50,9 @@ class TasksController < ApplicationController
   
   def task_parameter
     params.require(:task).permit(:title,:description)
+  end
+
+  def update_duration
+    Task.update_all_playing(current_user)
   end
 end
