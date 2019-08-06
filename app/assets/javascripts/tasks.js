@@ -1,5 +1,4 @@
 function TasksIndex(){
-    console.log('hola mundo')
     setInterval(function(){
         $(".playing-task").each(function(idx,el){
             $seconds = $(el).find('.seconds')
