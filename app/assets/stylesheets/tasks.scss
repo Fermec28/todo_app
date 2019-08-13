@@ -13,7 +13,7 @@ body{
 
 #todo-container,
 #done-container{
-    max-height: 80%;
+    max-height: 80vh;
     overflow-y: scroll;
 }
 
@@ -29,4 +29,9 @@ body{
 .playing-task:hover
 {
     background-color: #f7f33bab;
+}
+
+.row .description{
+    max-height: 150px;
+    overflow-y: auto;
 }
